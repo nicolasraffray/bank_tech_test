@@ -28,6 +28,10 @@ describe('Bank', function(){
       bank.deposit(100.00)
       expect(bank.balance).toEqual(100.00)
     })
+    it('takes a specific date with the deposit', function(){
+      bank.deposit(100.00, "02/12/2019")
+      expect(bank.transactions).toEqual([['02/12/2019',100.00,100.00]])
+    })
   })
 
   describe('withdraw', function(){
@@ -35,6 +39,11 @@ describe('Bank', function(){
       bank.deposit(100.00)
       bank.withdraw(100.00)
       expect(bank.balance).toEqual(0)
+    })
+    it('takes a specific date with the withdraw', function(){
+      bank.balance = 100.00
+      bank.withdraw(100.00, '02/12/2019')
+      expect(bank.transactions).toEqual([['02/12/2019',-100.00,0.00]])
     })
   })
 
