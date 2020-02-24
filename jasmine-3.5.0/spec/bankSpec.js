@@ -33,4 +33,11 @@ describe('Bank', function(){
       expect(bank.balance).toEqual(0)
     })
   })
+
+  describe('append_action', function(){
+    it('adds the deposit action to a new line of the balance sheet', function(){
+      bank.deposit(100)
+      expect(bank.print_statement()).toEqual("Date||Credit||Debit||Balance\n|| || ||100||100")
+    })
+  })
 })
