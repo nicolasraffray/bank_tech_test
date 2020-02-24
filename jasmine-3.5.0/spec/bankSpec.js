@@ -11,9 +11,9 @@ describe('Bank', function(){
       })
   })
 
-  describe('print_bank_balance', function(){
-    it('prints empty statement if there is nothing', function(){
-      expect(bank.print_statement()).toEqual("Date||Credit||Debit||Balance")
+  describe('transactions',function(){
+    it('gets the transaction history', function(){
+      expect(bank.history()).toEqual([])
     })
   })
 
@@ -25,29 +25,29 @@ describe('Bank', function(){
 
   describe('deposit', function(){
     it('adds a specified amount to the users balance', function(){
-      bank.deposit(100)
-      expect(bank.balance).toEqual(100)
+      bank.deposit(100.00)
+      expect(bank.balance).toEqual(100.00)
     })
   })
 
   describe('withdraw', function(){
     it('deducts a specific amount from balance', function(){
-      bank.deposit(100)
-      bank.withdraw(100)
+      bank.deposit(100.00)
+      bank.withdraw(100.00)
       expect(bank.balance).toEqual(0)
     })
   })
 
   describe('update', function(){
     it('adds the deposit action to a new line of the balance sheet', function(){
-      bank.deposit(100)
-      expect(bank.print_statement()).toEqual("Date||Credit||Debit||Balance\n||01/01/2020|| ||100||100")
+      bank.deposit(100.00)
+      expect(bank.transactions).toEqual([['01/01/2020',100.00,100.00]])
     })
 
     it('reduces the balance by the credit amount adding it to a new balance sheet line', function(){
-      bank.balance = 100
-      bank.withdraw(100)
-      expect(bank.print_statement()).toEqual("Date||Credit||Debit||Balance\n||01/01/2020||100|| ||0")
+      bank.balance = 100.00
+      bank.withdraw(100.00)
+      expect(bank.transactions).toEqual([["01/01/2020",-100.00,0.00]])
     })
   })
 

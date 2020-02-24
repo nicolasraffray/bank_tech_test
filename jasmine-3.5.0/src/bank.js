@@ -1,23 +1,20 @@
 
 function Bank(){
-  this.sheet = "Date||Credit||Debit||Balance"
   this.balance = 0
-  this.update = function(amount,balance,debit){ 
-    if(debit === true){ this.sheet = `${this.sheet}\n||${this.todays_date()}|| ||${amount}||${balance}`}
-    else { this.sheet = `${this.sheet}\n||${this.todays_date()}||${amount}|| ||${balance}`} }
+  this.transactions = []
 }
 
-
-Bank.prototype.print_statement = function(){ return this.sheet }
+Bank.prototype.history = function(){ return this.transactions }
 
 Bank.prototype.deposit = function(amount){ 
   this.balance += amount
-  this.update( amount, this.balance, true ) 
+  this.update(amount) 
 }
 
 Bank.prototype.withdraw = function(amount){ 
-  this.balance -= amount 
-  this.update( amount, this.balance, false )
+  amount = (0-amount)
+  this.balance += amount
+  this.update(amount)
 }
 
 Bank.prototype.todays_date = function(){
@@ -27,4 +24,8 @@ Bank.prototype.todays_date = function(){
   var yyyy = today.getFullYear();
 
   return today = dd + '/' + mm + '/' + yyyy
+}
+
+Bank.prototype.update = function (amount) { 
+  this.transactions.push([this.todays_date(),amount,this.balance])
 }
