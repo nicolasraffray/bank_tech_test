@@ -52,7 +52,6 @@ describe('Bank', function(){
       bank.deposit(100.00)
       expect(bank.transactions).toEqual([['01/01/2020',100.00,100.00]])
     })
-
     it('reduces the balance by the credit amount adding it to a new balance sheet line', function(){
       bank.balance = 100.00
       bank.withdraw(100.00)

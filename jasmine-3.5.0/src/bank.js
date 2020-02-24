@@ -7,7 +7,6 @@ function Bank(){
 Bank.prototype.history = function(){ return this.transactions }
 
 Bank.prototype.deposit = function(amount, date){ 
-  console.log(date)
   this.balance += amount
   this.update(amount,date) 
 }
