@@ -6,9 +6,9 @@ describe('Bank', function(){
   beforeEach(function(){
     bank = new Bank 
     var date = new Date(2020,0,1)
-      spyOn(window, 'Date').and.callFake(function(){
-        return date
-      })
+    spyOn(window, 'Date').and.callFake(function(){
+      return date
+    })
   })
 
   describe('transactions',function(){
@@ -48,12 +48,6 @@ describe('Bank', function(){
       bank.balance = 100.00
       bank.withdraw(100.00)
       expect(bank.transactions).toEqual([["01/01/2020",-100.00,0.00]])
-    })
-  })
-
-  describe('todays_date', function(){ 
-    it('generates the current date in the correct format for the user', function(){
-      expect(bank.todays_date()).toEqual('01/01/2020')
     })
   })
 })
