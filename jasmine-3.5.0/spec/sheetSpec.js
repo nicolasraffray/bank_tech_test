@@ -13,16 +13,16 @@ describe("Sheet", function(){
     })
 
     it('displays transactions in reverse order', function(){
-     expect(statement.print_statement([["01/01/2020",100.00,100.00],["01/01/2020",-100,0]])).toEqual("Date||Credit||Debit||Balance\n01/01/2020||100|| ||0\n01/01/2020|| ||100||100")
+     expect(statement.print_statement([["01/01/2020",100,100],["01/01/2020",-100,0]])).toEqual("Date||Credit||Debit||Balance\n01/01/2020||100.00|| ||0.00\n01/01/2020|| ||100.00||100.00")
     })
   })
 
   describe('parseSheet', function(){
     it('converts deposit transaction to string', function(){
-      expect(statement.parseSheet([["01/01/2020",100.00,100.00]])).toEqual(["01/01/2020|| ||100||100"])
+      expect(statement.parseSheet([["01/01/2020",100,100]])).toEqual(["01/01/2020|| ||100.00||100.00"])
     })
     it('converts credit transaction to string', function(){
-      expect(statement.parseSheet([["01/01/2020",-100.00,0.00]])).toEqual(["01/01/2020||100|| ||0"])
+      expect(statement.parseSheet([["01/01/2020",-100,0]])).toEqual(["01/01/2020||100.00|| ||0.00"])
     })
   })
 })

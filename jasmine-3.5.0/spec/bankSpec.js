@@ -35,25 +35,27 @@ describe('Bank', function(){
 
   describe('deposit', function(){
     it('adds a specified amount to the users balance', function(){
-      bank.deposit(100.00)
-      expect(bank.balance).toEqual(100.00)
+      bank.deposit(100)
+      expect(bank.balance).toEqual(100)
     })
     it('takes a specific date with the deposit', function(){
-      bank.deposit(100.00, "02/12/2019")
-      expect(bank.transactions).toEqual([['02/12/2019',100.00,100.00]])
+      console.log(bank.balance)
+      bank.deposit(100, "02/12/2019")
+      
+      expect(bank.transactions).toEqual([['02/12/2019',100,100]])
     })
   })
 
   describe('withdraw', function(){
     it('deducts a specific amount from balance', function(){
-      bank.deposit(100.00)
-      bank.withdraw(100.00)
+      bank.deposit(100)
+      bank.withdraw(100)
       expect(bank.balance).toEqual(0)
     })
     it('takes a specific date with the withdraw', function(){
       bank.balance = 100.00
-      bank.withdraw(100.00, '02/12/2019')
-      expect(bank.transactions).toEqual([['02/12/2019',-100.00,0.00]])
+      bank.withdraw(100, '02/12/2019')
+      expect(bank.transactions).toEqual([['02/12/2019',-100,0]])
     })
   })
 
@@ -75,13 +77,13 @@ describe('Bank', function(){
 
   describe('update', function(){
     it('adds the deposit action to a new line of the balance sheet', function(){
-      bank.deposit(100.00)
-      expect(bank.transactions).toEqual([['01/01/2020',100.00,100.00]])
+      bank.deposit(100)
+      expect(bank.transactions).toEqual([['01/01/2020',100,100]])
     })
     it('reduces the balance by the credit amount adding it to a new balance sheet line', function(){
-      bank.balance = 100.00
-      bank.withdraw(100.00)
-      expect(bank.transactions).toEqual([["01/01/2020",-100.00,0.00]])
+      bank.balance = 100
+      bank.withdraw(100)
+      expect(bank.transactions).toEqual([["01/01/2020",-100,0]])
     })
   })
 })

@@ -7,13 +7,13 @@ function Bank(statementConstructor){
 
 Bank.prototype.history = function(){ return this.transactions }
 
-Bank.prototype.deposit = function(amount, date){ 
-  this.balance += amount
-  this.update(amount,date) 
+Bank.prototype.deposit = function(money, date){ 
+  this.balance += money
+  this.update(money,date) 
 }
 
-Bank.prototype.withdraw = function(amount,date){ 
-  amount = (0-amount)
+Bank.prototype.withdraw = function(money,date){ 
+  amount = -Math.abs(money)
   this.balance += amount
   this.update(amount,date)
 }
@@ -42,3 +42,4 @@ Bank.prototype._createDate = function(){
 
   return today = dd + '/' + mm + '/' + yyyy
 }
+
