@@ -14,7 +14,6 @@
   bank.printStatement()
 
 ## Approach
-
   Create 2 classes bank which deals with transaction logic and statement  that deals with the logic and creation of the bank statement. 
 
 ## How Code Is Structured
