@@ -13,13 +13,12 @@
   bank.withdraw(500, "14/01/2012")
   bank.printStatement()
 
-## Approach
+## Approach
 
-  Create 2 classes bank which deals with transaction logic and statement  that deals with the logic and creation of the bank statement. 
+Create 2 classes bank which deals with transaction logic and statement  that deals with the logic and creation of the bank statement. 
 
 ## How Code Is Structured
-
-  Bank inherits from statement so statement logic is encapsulated
+Bank inherits from statement so statement logic is encapsulated
 
 ## The Output
 
