@@ -1,17 +1,24 @@
 'use strict';
 
 describe('Bank', function(){
-  var bank, today;
+  var bank, today, statement;
 
   beforeEach(function(){
     today =  new Date(2020,0,1)
     spyOn(window, 'Date').and.callFake(function(){
       return today
     })
-    bank = new Bank
-    // date = jasmine.createSpyObj('theDate',['parse_date'])
-    // date.parse_date.and.callFake(function(){return '01/01/2020'})
-    
+
+    statement = {
+      print_statement: function(){ return "string" }
+    }
+    bank = new Bank(statement)
+  })
+
+  describe('printStatement', function(){
+    it('prints out the balance sheet', function(){
+      expect(bank.printStatement()).toEqual("string")
+    })
   })
 
   describe('transactions',function(){

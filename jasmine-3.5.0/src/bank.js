@@ -1,6 +1,6 @@
 
-function Bank(){
-  
+function Bank(statementConstructor){
+  this.statement = statementConstructor
   this.balance = 0
   this.transactions = []
 }
@@ -28,6 +28,10 @@ Bank.prototype.checkDate = function(date){
     }
   else{ 
     return this._createDate() }
+}
+
+Bank.prototype.printStatement = function(){
+  return this.statement.print_statement(this.transactions)
 }
 
 Bank.prototype._createDate = function(){
