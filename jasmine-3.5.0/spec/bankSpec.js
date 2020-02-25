@@ -1,14 +1,17 @@
 'use strict';
 
 describe('Bank', function(){
-  var bank;
+  var bank, today;
 
   beforeEach(function(){
-    bank = new Bank 
-    var date = new Date(2020,0,1)
+    today =  new Date(2020,0,1)
     spyOn(window, 'Date').and.callFake(function(){
-      return date
+      return today
     })
+    bank = new Bank
+    // date = jasmine.createSpyObj('theDate',['parse_date'])
+    // date.parse_date.and.callFake(function(){return '01/01/2020'})
+    
   })
 
   describe('transactions',function(){
@@ -46,6 +49,22 @@ describe('Bank', function(){
       expect(bank.transactions).toEqual([['02/12/2019',-100.00,0.00]])
     })
   })
+
+  describe('_createDate', function(){
+    it('returns the date in the form xx/xx/xxxx', function(){
+      expect(bank._createDate()).toEqual('01/01/2020')
+    })
+  })
+
+  describe('checkDate', function(){
+    it("checks if client passes a date", function(){
+      expect(bank.checkDate('01/01/2020')).toEqual('01/01/2020')
+    })
+    it("returns current date if date is not passed", function(){
+      expect(bank.checkDate()).toEqual('01/01/2020')
+    })
+  })
+
 
   describe('update', function(){
     it('adds the deposit action to a new line of the balance sheet', function(){

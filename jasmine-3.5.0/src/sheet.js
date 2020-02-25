@@ -1,15 +1,15 @@
 'use strict';
 
-function Sheet(bank){
+function Statement(bank){
   this.account = bank
   this.sheet = "Date||Credit||Debit||Balance"
 }
 
-Sheet.prototype.print_statement = function(){ 
+Statement.prototype.print_statement = function(){ 
   return this.sheet + "\n" + this.parseSheet().reverse().join('\n') 
 }
 
-Sheet.prototype.parseSheet = function () { 
+Statement.prototype.parseSheet = function () { 
 
   var array = this.account.history()
   var array_length = array.length

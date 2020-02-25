@@ -1,5 +1,6 @@
 
 function Bank(){
+  
   this.balance = 0
   this.transactions = []
 }
@@ -17,8 +18,23 @@ Bank.prototype.withdraw = function(amount,date){
   this.update(amount,date)
 }
 
-Bank.prototype.update = function (amount,date = new theDate) { 
-  if(date instanceof theDate){
-  this.transactions.push([date.todays_date(),amount,this.balance]) }
-  else{ this.transactions.push([date,amount,this.balance]) }
+Bank.prototype.update = function (amount,date) { 
+  this.transactions.push([this.checkDate(date),amount,this.balance]) 
+}
+
+Bank.prototype.checkDate = function(date){
+  if(date !== undefined){ 
+    return date
+    }
+  else{ 
+    return this._createDate() }
+}
+
+Bank.prototype._createDate = function(){
+  var today = new Date
+  var dd = String(today.getDate()).padStart(2, '0')
+  var mm = String(today.getMonth() + 1).padStart(2, '0')
+  var yyyy = today.getFullYear();
+
+  return today = dd + '/' + mm + '/' + yyyy
 }
