@@ -1,14 +1,14 @@
 'use strict';
 
-function Statement(){
+function FormatStatement(){
   this.sheet = "date || credit || debit || balance"
 }
 
-Statement.prototype.print_statement = function(transactions){ 
-  return this.sheet + "\n" + this.parseSheet(transactions).reverse().join('\n') 
+FormatStatement.prototype.print_statement = function(transactions){ 
+  return this.sheet + "\n" + this.parseStatement(transactions).reverse().join('\n') 
 }
 
-Statement.prototype.parseSheet = function (transactions) { 
+FormatStatement.prototype.parseStatement = function (transactions) { 
   var array = transactions
   var array_length = transactions.length
 

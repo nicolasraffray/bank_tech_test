@@ -1,10 +1,10 @@
 'use strict';
 
-describe("Sheet", function(){
+describe("FormatSatement", function(){
   var statement, bank
 
   beforeEach(function(){
-    statement = new Statement()
+    statement = new FormatStatement()
   })
 
   describe('print_bank_balance', function(){
@@ -19,10 +19,10 @@ describe("Sheet", function(){
 
   describe('parseSheet', function(){
     it('converts deposit transaction to string', function(){
-      expect(statement.parseSheet([["01/01/2020",100,100]])).toEqual(["01/01/2020 || 100.00 || || 100.00"])
+      expect(statement.parseStatement([["01/01/2020",100,100]])).toEqual(["01/01/2020 || 100.00 || || 100.00"])
     })
     it('converts credit transaction to string', function(){
-      expect(statement.parseSheet([["01/01/2020",-100,0]])).toEqual(["01/01/2020 || || 100.00 || 0.00"])
+      expect(statement.parseStatement([["01/01/2020",-100,0]])).toEqual(["01/01/2020 || || 100.00 || 0.00"])
     })
   })
 })
