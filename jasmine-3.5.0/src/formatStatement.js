@@ -1,14 +1,8 @@
 'use strict';
 
-function FormatStatement(){
-  this.sheet = "date || credit || debit || balance"
-}
+function FormatStatement(){}
 
-FormatStatement.prototype.print_statement = function(transactions){ 
-  return this.sheet + "\n" + this.parseStatement(transactions).reverse().join('\n') 
-}
-
-FormatStatement.prototype.parseStatement = function (transactions) { 
+FormatStatement.prototype.parse_transactions = function (transactions) { 
   var array = transactions
   var array_length = transactions.length
 

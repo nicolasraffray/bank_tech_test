@@ -22,16 +22,13 @@ Bank.prototype.update = function (amount,date) {
   this.transactions.push([this.checkDate(date),amount,this.balance]) 
 }
 
+
 Bank.prototype.checkDate = function(date){
   if(date !== undefined){ 
     return date
     }
   else{ 
     return this._createDate() }
-}
-
-Bank.prototype.printStatement = function(){
-  return this.statement.print_statement(this.transactions)
 }
 
 Bank.prototype._createDate = function(){

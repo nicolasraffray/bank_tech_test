@@ -8,17 +8,7 @@ describe('Bank', function(){
     spyOn(window, 'Date').and.callFake(function(){
       return today
     })
-
-    statement = {
-      print_statement: function(){ return "string" }
-    }
-    bank = new Bank(statement)
-  })
-
-  describe('printStatement', function(){
-    it('prints out the balance sheet', function(){
-      expect(bank.printStatement()).toEqual("string")
-    })
+    bank = new Bank()
   })
 
   describe('transactions',function(){
@@ -39,9 +29,7 @@ describe('Bank', function(){
       expect(bank.balance).toEqual(100)
     })
     it('takes a specific date with the deposit', function(){
-      console.log(bank.balance)
       bank.deposit(100, "02/12/2019")
-      
       expect(bank.transactions).toEqual([['02/12/2019',100,100]])
     })
   })
