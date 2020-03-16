@@ -1,7 +1,7 @@
 # Bank tech Test
 
   - clone or fork this repo
-  - open index.html in a browser and open the console
+  - open SpecRunner.html in a browser and open the console
 
 
   paste the following into the console
