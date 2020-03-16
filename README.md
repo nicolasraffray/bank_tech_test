@@ -1,6 +1,6 @@
 # Bank tech Test
 
-  - clone the repo
+  - clone or fork this repo
   - open index.html in a browser and open the console
 
 
@@ -11,14 +11,16 @@
   bank.deposit(1000, "10/01/2012")
   bank.deposit(2000, "13/01/2012")
   bank.withdraw(500, "14/01/2012")
-  bank.printStatement()
+  bank.withdraw(500, "14/01/2012")
+  print_statement = new printStatement(bank)
+  print_statement.print_transactions()
 
 ## Approach
 
-Create 2 classes bank which deals with transaction logic and statement  that deals with the logic and creation of the bank statement. 
+Created 3 classes. Bank, which deals with transaction logic, formatStatement which converts transaction history into array of strings and printStatement which will print these strings in the correct order. 
 
 ## How Code Is Structured
-Bank inherits from statement so statement logic is encapsulated
+Bank inherits from statement so statement logic is encapsulated. Bank is then passed into a print statement constructor to print the transaction histroy.
 
 ## The Output
 
